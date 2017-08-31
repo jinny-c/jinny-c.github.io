@@ -1,0 +1,17 @@
+{% for post in site.posts %}
+    {% cycle 'add row' : '<div class="row">', '', '' %}
+	    <div class="column column-33">
+			<a href="{{ post.url | prepend: site.baseurl }}">
+				<div class="preview-panel">
+	                <img src="{{ post.preview }}" />
+					<div class="post-title">{{ post.title }}</div>
+				</div>
+			</a>
+		</div>
+	{% cycle 'end row' : '', '', '</div>' %}
+{% endfor %}
+{% cycle 'end row' : '', '</div>', '</div>' %}
+
+
+
+

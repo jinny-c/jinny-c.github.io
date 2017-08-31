@@ -1,0 +1,53 @@
+---
+layout: category
+title: 环境搭建
+description: 关于搭建环境的相关知识。
+preview: /static/images/common/150/54.jpg
+categories: [test]
+---
+
+#### 注册github账号，安装git
+
+#### 安装ruby
+
+>+ window系统下，可以使用rails install来安装ruby环境，下载地址为：[http://rubyinstaller.org/downloads/](http://rubyinstaller.org/downloads/) ，建议下载2.3以上的新版。  
+>+ 下载 RailsInstaller 之后，双击 railsinstaller-3.2.0 文件，启动 Ruby 安装向导点击next，向导完成安装，记得勾选 Add Ruby executables to your PATH，直到 Ruby 安装程序完成 Ruby 安装为止  
+>+ 安装后，在cmd中输入ruby -v和gem -v来看看是否安装成功，看到版本号就说明成功。   
+*``注：用RubyInstaller安装Ruby之后都附带有Gems，如有需要可以单独下载RubyGems。网址为：``<https://rubygems.org/pages/download>*
+
+### 下载jekyll
+>使用gem来安装jekyll，在命令行中输入  
+`gem install jekyll`  
+>所有的jekyll的gem依赖包都会被自动安装。  
+安装其他  
+`gem install bundler`  
+非必装  
+`gem install jekyll-paginate`  
+`gem install jekyll-github-metadata`  
+`gem install jekyll-geo-pattern`
+
+
+#### 建立自己的第一个博客
+
+>首先看看你想把你的博客建在哪里，我的是搭建在C盘，如果你想建在D盘，则输入：  
+`cd d:`  
+然后输入创建的博客  
+`jekyll new blog`  //blog为你的博客文件名  
+控制台可以看见（创建的地址有所不同） New jekyll site installed in C : /blog。你的C盘的文件夹下也会出现相应的blog文件。  
+开启jekyll内置服务器  
+实现转入blog的目录，输入：  
+`cd blog` //一定要进入创建的对应blog目录，否则服务无法开启  
+然后输入：  
+`jekyll serve`  //开启服务器，可以按ctrl+c停止  
+Jekyll服务器默认端口是4000，所以打开浏览器输入： http://localhost:4000 就可以看到生成的博客页面。  
+
+
+
+[我的](https://jinny-c.github.io/)
+
+### 推荐
+[`引用 1`](http://dongchuan.github.io/)
+[`引用 2`](http://mazhuang.org)
+[`引用 3`](http://www.panxw.com)  
+[ jekyll 模板](https://github.com/midzer/urban-theme.git)  
+[使用 Jekyll 在 Github 上搭建](https://segmentfault.com/a/1190000000406013)
