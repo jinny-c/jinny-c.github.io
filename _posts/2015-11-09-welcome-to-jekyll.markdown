@@ -7,6 +7,7 @@ preview: /static/images/common/300/300.jpg
 ---
 
 
+杂谈
 
 大变量site.
 site.posts: 所有博客的hash.
