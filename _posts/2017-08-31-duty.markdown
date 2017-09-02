@@ -12,6 +12,7 @@ categories: [test]
 
 >+ window系统下，可以使用rails install来安装ruby环境，下载地址为：[http://rubyinstaller.org/downloads/](http://rubyinstaller.org/downloads/) ，建议下载2.3以上的新版。  
 >+ 下载 RailsInstaller 之后，双击 railsinstaller-3.2.0 文件，启动 Ruby 安装向导点击next，向导完成安装，记得勾选 Add Ruby executables to your PATH，直到 Ruby 安装程序完成 Ruby 安装为止  
+>+ 如果path下没有，可自行添加环境变量配置：变量名`RUBY_HOME`变量值`C:\Ruby24-x64`，`path`中添加`;%RUBY_HOME%\bin;`
 >+ 安装后，在cmd中输入ruby -v和gem -v来看看是否安装成功，看到版本号就说明成功。   
 *``注：用RubyInstaller安装Ruby之后都附带有Gems，如有需要可以单独下载RubyGems。网址为：``<https://rubygems.org/pages/download>*
 
@@ -19,6 +20,8 @@ categories: [test]
 >使用gem来安装jekyll，在命令行中输入  
 `gem install jekyll`  
 >所有的jekyll的gem依赖包都会被自动安装。  
+添加变量变量名`SSL_CERT_FILE`变量值`C:\Ruby24-x64\cacert\cacert.pem `
+
 安装其他  
 `gem install bundler`  
 非必装  
