@@ -2,7 +2,7 @@
 layout: category
 title:  "java的对象及引用"
 description: 关于java对象的引用。
-categories: [java, reference, object]
+categories: [java, reference, object, base]
 preview: /static/images/common/150/54.jpg
 ---
 
