@@ -2,7 +2,7 @@
 layout: category
 title:  "集合collection"
 description: 关于集合。
-categories: [java, collection]
+categories: [java, collection, base]
 preview: /static/images/common/150/54.jpg
 ---
 
@@ -156,7 +156,7 @@ Hashtable通过initial capacity和load factor两个参数调整性能。通常�
 >这一点要看实际情况的。若只对单条数据插入或删除，ArrayList的速度反而优于LinkedList。但若是批量随机的插入删除数 据，LinkedList的速度大大优于ArrayList. 因为ArrayList每插入一条数据，要移动插入点及之后的所有数据。
 
 
-### ashMap与TreeMap
+### hashMap与TreeMap
  (注)文章出处：<http://www.diybl.com/course/3_program/java/javaxl/200875/130233.html>
 1. HashMap通过hashcode对其内容进行快速查找，而TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个有序的结果你就应该使用TreeMap（HashMap中元素的排列顺序是不固定的）。
 2. HashMap通过hashcode对其内容进行快速查找，而TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个有序的结果你就应该 使用TreeMap（HashMap中元素的排列顺序是不固定的）。集合框架”提供两种常规的Map实现：HashMap和TreeMap (TreeMap实现SortedMap接口)。
