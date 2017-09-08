@@ -26,7 +26,8 @@ ArrayList arrayList = new ArrayList(Arrays.asList(arr));
 Set set = new HashSet(Arrays.asList(arr));
 return set.contains(targetValue);
 ````
-这段代码起作用，但是没有必要把一个数组转化成列表，转化为列表需要额外的时间。它可以像下面那样简单:
+这段代码起作用，但是没有必要把一个数组转化成列表，转化为列表需要额外的时间。  
+它可以像下面那样简单:
 ````java
 Arrays.asList(arr).contains(targetValue);
 ````

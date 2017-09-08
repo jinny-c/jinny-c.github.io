@@ -8,7 +8,7 @@ preview: /static/images/common/150/54.jpg
 
 
 >*Collection*（支持`iterator()`的方法，返回一个迭代子）
->+ *List*（提供 `listIterator()` 方法；可重复、可 null、有序、类似数组）
+>+ *List*（提供 `list.iterator()` 方法；可重复、可 null、有序、类似数组）
 >   + *LinkedList*  
     （无同步方法，`Collections.synchronizedList(new LinkedList(...))`)、随机访问速度较慢、适合频繁进行插入和删除操作）  
     （类似：一种双向循环链表的链式线性表）  
