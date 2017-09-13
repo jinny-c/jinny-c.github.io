@@ -51,8 +51,8 @@ preview: /static/images/common/150/54.jpg
 
 　　`Hashtable`和`HashMap`比较相似，感兴趣的朋友可以看“Hashtable源码剖析”这篇博客：<http://blog.csdn.net/ns_code/article/details/36191279>
 
-## **下面主要介绍一下`HashTable`和`HashMap`区别**
-### 3. `HashTable`和`HashMap`区别
+## 下面主要介绍一下HashTable和HashMap区别
+### 3. HashTable和HashMap区别
 　　1. 继承的父类不同  
 　　`Hashtable`继承自`Dictionary`类，而`HashMap`继承自`AbstractMap`类。但二者都实现了`Map`接口。  
 　　2. 线程安全性不同  
@@ -64,10 +64,10 @@ preview: /static/images/common/150/54.jpg
 ````java
   Map m = Collections.synchronizedMap(new HashMap(...));
 ````
-　　`Hashtable` 线程安全很好理解，因为它每个方法中都加入了`Synchronize`。
+　　`Hashtable` 线程安全很好理解，因为它每个方法中都加入了`Synchronize`。  
 　　`HashMap`底层是一个`Entry`数组，当发生`hash`冲突的时候，`hashmap`是采用链表的方式来解决的，在对应的数组位置存放链表的头结点。对链表而言，新加入的节点会从头结点加入。
 
-我们可以得到第四个不同的地方
+**我们可以得到第四个不同的地方**
 
 #### 1. `key`和`value`是否允许`null`值
 　　其中`key`和`value`都是对象，并且不能包含重复`key`，但可以包含重复的`value`。  
@@ -79,12 +79,12 @@ preview: /static/images/common/150/54.jpg
 　　`Hashtable`、`HashMap`都使用了 `Iterator`。而由于历史原因，`Hashtable`还使用了`Enumeration`的方式 。
 
 #### 3. `hash`值不同
-　　哈希值的使用不同，`HashTable`直接使用对象的`hashCode`。而`HashMap`重新计算hash值。  
-　　`hashCode`是jdk根据对象的地址或者字符串或者数字算出来的int类型的数值。  
-　　`Hashtable`计算`hash`值，直接用`key`的`hashCode()`，而HashMap重新计算了`key`的`hash`值，`Hashtable`在求`hash`值对应的位置索引时，用取模运算，
-而`HashMap`在求位置索引时，则用与运算，且这里一般先用hash&0x7FFFFFFF后，再对length取模，&0x7FFFFFFF的目的是为了将负的`hash`值转化为正值，因为`hash`值有可能为负数，而&0x7FFFFFFF后，只有符号外改变，而后面的位都不变。
+　　哈希值的使用不同，`HashTable`直接使用对象的`hashCode`。而`HashMap`重新计算`hash`值。  
+　　`hashCode`是jdk根据对象的地址或者字符串或者数字算出来的`int`类型的数值。  
+　　`Hashtable`计算`hash`值，直接用`key`的`hashCode()`，而`HashMap`重新计算了`key`的`hash`值，`Hashtable`在求`hash`值对应的位置索引时，用取模运算，
+而`HashMap`在求位置索引时，则用与运算，且这里一般先用`hash&0x7FFFFFFF`后，再对`length`取模，`&0x7FFFFFFF`的目的是为了将负的`hash`值转化为正值，因为`hash`值有可能为负数，而`&0x7FFFFFFF`后，只有符号外改变，而后面的位都不变。
 
 #### 4. 内部实现使用的数组初始化和扩容方式不同
-　　`HashTable`在不指定容量的情况下的默认容量为`11`，而`HashMap`为16，`Hashtable`不要求底层数组的容量一定要为2的整数次幂，而`HashMap`则要求一定为`2的整数次幂`。  
-　　`Hashtable`扩容时，将容量变为原来的`2倍加1`，而`HashMap`扩容时，将容量变为原来的`2倍`。  
-　　`Hashtable`和`HashMap`它们两个内部实现方式的数组的初始大小和扩容的方式。`HashTable`中`hash`数组默认大小是`11`，增加的方式是 `old*2+1`。
+　　`Hashtable`和`HashMap`它们两个内部实现方式的数组的初始大小和扩容的方式。
+`HashTable`中`hash`数组默认大小是`11`，增加的方式是 `old*2+1`。而`HashMap`为`16`，扩容时，将容量变为原来的`2倍`。 
+`Hashtable`不要求底层数组的容量一定要为2的整数次幂，而`HashMap`则要求一定为`2的整数次幂`。  
