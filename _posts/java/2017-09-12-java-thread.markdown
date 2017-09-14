@@ -163,16 +163,22 @@ public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTim
 　　`TimeUnit.MICROSECONDS;` //微妙   
 　　`TimeUnit.NANOSECONDS;` //纳秒  
 *workQueue*：一个阻塞队列，用来存储等待执行的任务，这个参数的选择也很重要，会对线程池的运行过程产生重大影响，一般来说，这里的阻塞队列有以下几种选择：   
-　　`ArrayBlockingQueue;`  
-　　`LinkedBlockingQueue;`  
-　　`SynchronousQueue;`  
+　　`ArrayBlockingQueue;`（有限队列 ）是这样 一种阻塞队列，其中每个 put 必须等待一个 take，反之亦然。同步队列没有任何内部容量。翻译一下：这是一个内部没有任何容量的阻塞队列，任何一次插入操作的元素都要等待相对的删除/读取操作，否则进行插入操作的线程就要一直等待，反之亦然   
+　　`LinkedBlockingQueue;` 一个由数组支持的有界阻塞队列。此队列按 FIFO（先进先出）原则对元素进行排序。新元素插入到队列的尾部，队列获取操作则是从队列头部开始获得元素。
+这是一个典型的“有界缓存区”，固定大小的数组在其中保持生产者插入的元素和使用者提取的元素。一旦创建了这样的缓存区，就不能再增加其容量。试图向已满队列中放入元素会导致操作受阻塞；试图从空队列中提取元素将导致类似阻塞。   
+　　`SynchronousQueue;` 在ThreadPoolExecutor线程池中常用的等待队列。它可以指定容量也可以不指定容量。由于它具有“无限容量”的特性，所以我还是将它归入了无限队列的范畴（实际上任何无限容量的队列/栈都是有容量的，这个容量就是Integer.MAX_VALUE）。 
+LinkedBlockingQueue的实现是基于链表结构，而不是类似ArrayBlockingQueue那样的数组。但实际使用过程中，不需要关心它的内部实现，如果指定了LinkedBlockingQueue的容量大小，那么它反映出来的使用特性就和ArrayBlockingQueue类似了。  
 `ArrayBlockingQueue`和`PriorityBlockingQueue`使用较少，一般使用`LinkedBlockingQueue`和`Synchronous`。线程池的排队策略与`BlockingQueue`有关。  
 *threadFactory*：线程工厂，主要用来创建线程；  
 *handler*：表示当拒绝处理任务时的策略，有以下四种取值：   
-　　`ThreadPoolExecutor.AbortPolicy`:丢弃任务并抛出`RejectedExecutionException`异常。  
-　　`ThreadPoolExecutor.DiscardPolicy`：也是丢弃任务，但是不抛出异常。  
-　　`ThreadPoolExecutor.DiscardOldestPolicy`：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）  
-　　`ThreadPoolExecutor.CallerRunsPolicy`：由调用线程处理该任务  
+　　`ThreadPoolExecutor.AbortPolicy`: 这个处理器，在任务被拒绝后会创建一个`RejectedExecutionException`异常并抛出。这个处理过程也是ThreadPoolExecutor线程池默认的    
+　　`ThreadPoolExecutor.DiscardPolicy`：将会默默丢弃这个被拒绝的任务，不会抛出异常，也不会通过其他方式执行这个任务的任何一个方法，更不会出现任何的日志提示。  
+　　`ThreadPoolExecutor.DiscardOldestPolicy`：它会检查当前ThreadPoolExecutor线程池的等待队列。并调用队列的poll()方法，将当前处于等待队列列头的等待任务强行取出，然后再试图将当前被拒绝的任务提交到线程池执行（重复此过程）   
+　　`ThreadPoolExecutor.CallerRunsPolicy`：这个拒绝处理器，将直接运行这个任务的run方法。但是，请注意并不是在ThreadPoolExecutor线程池中的线程中运行，而是直接调用这个任务实现的run方法。    
+
+　　*实际上查阅这四种ThreadPoolExecutor线程池自带的拒绝处理器实现，您可以发现CallerRunsPolicy、DiscardPolicy、DiscardOldestPolicy处理器针对被拒绝的任务并不是一个很好的处理方式。   
+　　CallerRunsPolicy在非线程池以外直接调用任务的run方法，可能会造成线程安全上的问题；DiscardPolicy默默的忽略掉被拒绝任务，也没有输出日志或者提示，开发人员不会知道线程池的处理过程出现了错误；
+DiscardOldestPolicy中e.getQueue().poll()的方式好像是科学的，但是如果等待队列出现了容量问题，大多数情况下就是这个线程池的代码出现了BUG。最科学的的还是AbortPolicy提供的处理方式：抛出异常，由开发人员进行处理。*
 
 `ThreadPoolExecutor`继承了`AbstractExecutorService`。  
 `AbstractExecutorService`是一个抽象类，它实现了`ExecutorService`接口。 而`ExecutorService`又是继承了`Executor`接口。  
@@ -195,6 +201,8 @@ public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTim
 但是它和`execute()`方法不同，它能够返回任务执行的结果，去看`submit()`方法的实现，会发现它实际上还是调用的`execute()`方法，只不过它利用了`Future`来获取任务执行结果。   
 　　`shutdown()`和`shutdownNow()`是用来关闭线程池的。   
 　　还有很多其他的方法：比如：`getQueue()`、`getPoolSize()`、`getActiveCount()`、`getCompletedTaskCount()`等获取与线程池相关属性的方法，有兴趣的朋友可以自行查阅API。
+
+参考[线程池的使用（ThreadPoolExecutor详解）](http://blog.csdn.net/lipc_/article/details/52025993)
 
 ----
 ----
