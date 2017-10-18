@@ -1,0 +1,34 @@
+/*returnTop*/
+p#left-top{
+    position:fixed;
+    top:360px;
+    left:80px;
+}
+p#left-top span{
+    text-align:left;
+    color:#d1d1d1;
+    display:block;
+    width:360px;
+    /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+    -moz-transition:color 1s;
+    -webkit-transition:color 1s;
+    -o-transition:color 1s;
+}
+p#left-top span:hover{
+    color:#979797;
+}
+p#left-top span{
+    background:transparent no-repeat -25px -290px;
+    border-radius:6px;
+    display:block;
+    width:360px;
+    margin-bottom:5px;
+    /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+    -moz-transition:background 1s;
+    -webkit-transition:background 1s;
+    -o-transition:background 1s;
+}
+/* ../images/common/icon/up-top-icon.png?1202 */
+#left-top a:hover{
+    background:transparent no-repeat -25px -290px;
+}
