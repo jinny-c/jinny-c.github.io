@@ -46,7 +46,7 @@ interface Demo {
 Demo只能够有静态的不能被修改的数据成员（也就是必须是static final的，不过在interface中一般不定义数据成员），所有的成员方法都是abstract的。
 从某种意义上说，interface是一种特殊形式的abstract class。
 
-对于abstract class和interface在语法定义层面更多的细节问题，不是本文的重点，不再赘述，读者可以参阅参考文献〔1〕获得更多的相关内容。
+对于abstract class和interface在语法定义层面更多的细节问题，不是本文的重点，不再赘述。
 
 #### **从编程层面看abstract class和interface**
 从编程的角度来看，abstract class和interface都可以用来实现"design by contract"的思想。但是在具体的使用上面还是有一些区别的。
@@ -67,7 +67,7 @@ Demo只能够有静态的不能被修改的数据成员（也就是必须是stat
 本小节将从另一个层面：abstract class和interface所反映出的设计理念，来分析一下二者的区别。作者认为，从这个层面进行分析才能理解二者概念的本质所在。
 
 前面已经提到过，abstarct class在Java语言中体现了一种继承关系，要想使得继承关系合理，父类和派生类之间必须存在"is a"关系，即父类和派生类在概念本质上应该是相同的
-（参考文献〔3〕中有关于"is a"关系的大篇幅深入的论述，有兴趣的读者可以参考）。对于interface 来说则不然，并不要求interface的实现者和interface定义在概念本质上是一致的，
+（有关于"is a"关系的大篇幅深入的论述，有兴趣的读者可以自行查找）。对于interface 来说则不然，并不要求interface的实现者和interface定义在概念本质上是一致的，
 仅仅是实现了interface定义的契约而已。为了使论述便于理解，下面将通过一个简单的实例进行说明。
 
 考虑这样一个例子，假设在我们的问题领域中有一个关于Door的抽象概念，该Door具有执行两个动作open和close，此时我们可以通过abstract class或者interface来定义一个表示该抽象概念的类型，定义方式分别如下所示：
