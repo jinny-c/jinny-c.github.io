@@ -2,7 +2,8 @@
 layout: category
 title:  "集合collection"
 description: 关于集合。
-categories: [java, collection, base]
+categories: java
+#categories: [java, collection, base]
 preview: /static/images/common/150/54.jpg
 ---
 

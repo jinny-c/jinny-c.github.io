@@ -2,7 +2,8 @@
 layout: category
 title:  "equals跟=="
 description: 关于equals跟==的比较。
-categories: [java, reference, base]
+categories: java
+#categories: [java, reference, base]
 preview: /static/images/common/150/54.jpg
 ---
 

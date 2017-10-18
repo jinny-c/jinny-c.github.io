@@ -2,7 +2,8 @@
 layout: category
 title:  "String的分析"
 description: 关于String类的分析。
-categories: [java, string, base]
+categories: java
+#categories: [java, string, base]
 preview: /static/images/common/150/54.jpg
 ---
 

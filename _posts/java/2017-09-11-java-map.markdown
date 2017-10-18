@@ -2,7 +2,8 @@
 layout: category
 title:  "HashTable和HashMap"
 description: HashTable和HashMap的区别详解。
-categories: [java, map, hashMap]
+categories: java
+#categories: [java, map, hashMap]
 preview: /static/images/common/150/54.jpg
 ---
 

@@ -2,7 +2,8 @@
 layout: category
 title:  "Java程序员们最常犯的10个错误"
 description: 关于一些常见误解。
-categories: [java, mistake]
+categories: java
+#categories: [java, mistake]
 preview: /static/images/common/150/54.jpg
 ---
 

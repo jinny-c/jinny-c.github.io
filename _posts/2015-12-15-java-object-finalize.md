@@ -6,7 +6,7 @@ description: 关于 Java 对象释放的疑惑解答，以及 finalize 方法的
 preview: /static/images/common/200/72.jpg
 layout: category
 #可以是列表,就是属于多个分类.
-categories: [java, test]
+categories: test
 #分类
 #category: java
 #标签

@@ -2,7 +2,8 @@
 layout: category
 title:  "锁、线程、队列"
 description: 详解。
-categories: [java, lock, thread, queue]
+categories: java
+#categories: [java, lock, thread, queue]
 preview: /static/images/common/150/54.jpg
 ---
 

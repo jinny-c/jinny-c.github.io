@@ -3,7 +3,7 @@ layout: post
 title:  "Welcome to Jekyll!"
 #date:   2015-11-09 15:39:40
 preview: /static/images/common/300/300.jpg
-#categories: [java, test]
+categories: test
 ---
 
 
