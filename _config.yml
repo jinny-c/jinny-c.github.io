@@ -21,3 +21,5 @@ all_categories: [
 ["other", "杂记","/posts/other.html"],
 ["about", "关于","/about.html"]
 ]
+
+port: 4001
