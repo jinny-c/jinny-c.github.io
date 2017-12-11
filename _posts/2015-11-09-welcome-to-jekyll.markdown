@@ -9,6 +9,16 @@ categories: test
 
 杂谈
 
+
+i remember 10% of what i hear
+i remember 30% of what i see
+i remember 40% of what i see and i hear
+i remember 60% of what i see,i hear and i do
+i remember 90% of what i see,i hear, i do and i say
+（我能记住90%我所见到的，听到的，我做过的，并且我复述过的）
+
+
+
 大变量site.
 site.posts: 所有博客的hash.
 
