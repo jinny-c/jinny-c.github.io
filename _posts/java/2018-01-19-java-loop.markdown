@@ -1,0 +1,51 @@
+---
+layout: category
+title:  "关于集合及循环"
+description: loop。
+categories: java
+#categories: [java, core]
+preview: /static/images/common/150/54.jpg
+---
+
+----
+----
+
+
+　　jdk中有个RandomAccess接口，这是一个标记接口(Marker)，它没有任何方法，这个接口被List的实现类（子类）使用。
+如果List子类实现了RandomAccess接口，那就表示它能够快速随机访问存储的元素。RandomAccess接口的意义在于：在对列表进行随机或顺序访问的时候，访问算法能够选择性能最佳方式。
+
+　　一般的列表访问算法在访问列表元素之前，都被建议先使用instanceof关键字检查一下列表是否是一个RandomAccess子类，然后再决定采用随机还是顺序方式访问列表中的元素，这样可以保证访问算法拥有最佳的性能。
+
+````java
+if (loopList instanceof RandomAccess) {
+	for (int i = 0; i < loopList.size(); i++) {
+		System.out.println("for:"+loopList.get(i));
+	}
+} else {
+	Iterator<?> iterator = loopList.iterator();
+	while (iterator.hasNext()) {
+		System.out.println("interator:"+iterator.next());
+	}
+}
+
+````
+
+　　使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历。  
+　　说明： keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出
+key 所对应的 value。而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效
+率更高。如果是 JDK8，使用 Map.foreach 方法
+````java
+for (Map.Entry<String, String> entry : loopMap.entrySet()) {
+	System.out.println("loopMap:" + entry.getKey() + entry.getValue());
+}
+````
+
+
+　　isEmpty()，判断是否为空，只要有一个元素，就可以判断了。
+size()，获取数量，必须得遍历一次（链表集合）。
+因此，用来判断是否为空，最好还是用isEmpty()方法。
+
+　　凡是实现List的都是有序的。
+凡是实现set的都是无序的。
+
+　　Set < E > 是一个不包含重复元素的 collection。更确切地讲，set 不包含满足 e1.equals(e2) 的元素对 e1 和 e2，并且最多包含一个 null 元素。

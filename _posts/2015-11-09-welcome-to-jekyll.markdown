@@ -9,6 +9,9 @@ categories: test
 
 杂谈
 
+阿里的github地址
+https://github.com/alibaba
+
 
 i remember 10% of what i hear.  
 i remember 30% of what i see.  
